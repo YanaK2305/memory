@@ -1,0 +1,106 @@
+:root {
+  --color1: #938414;
+  --color2: #bea450;
+  --color3: #e7c786;
+  --color4: #c9e9b7;
+  --color5: #c7fff3;
+}
+/* создание переменных */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--color1);
+}
+.container {
+  width: 400px;
+  height: 400px;
+  background-color: var(--color3);
+  border-radius: 10px;
+  padding: 25px;
+}
+img {
+  max-width: 45px;
+}
+span {
+  font-size: 40px;
+  color: var(--color1);
+}
+.cards,
+.card,
+.view {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cards {
+  width: 100%;
+  height: 100%;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.card {
+  position: relative;
+  width: calc(100% / 4 - 10px);
+  height: calc(100% / 4 - 10px);
+  cursor: pointer;
+  transform-style: preserve-3d;
+  perspective: 800px;
+  /* эти два свойства позволяют сделать 3D трансформацию */
+}
+.view {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  border-radius: 7px;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5);
+  backface-visibility: hidden;
+  pointer-events: none;
+  user-select: none;
+  transition: all 0.25s linear;
+}
+.front {
+}
+.material-icons {
+}
+.back {
+  transform: rotateY(-180deg);
+}
+.flip .front {
+  transform: rotateY(180deg);
+}
+.flip .back {
+  transform: rotateY(0);
+}
+.shake {
+  animation: shake 0.35s ease-in-out 0.4s;
+}
+/* анимация тряски карточки */
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-13px);
+  }
+  40% {
+    transform: translateX(13px);
+  }
+  60% {
+    transform: translateX(-8px);
+  }
+  80% {
+    transform: translateX(8px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
